@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paalam | Bridging Menstrual Health</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- COLOR SCHEME & VARIABLES --- */
+        :root {
+            --terracotta: #C05746;
+            --sage-green: #899E8B;
+            --cream: #F5F2E9;
+            --cream-dark: #e8e4d8;
+            --font-heading: 'DM Serif Display', serif; 
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* --- BASE STYLES --- */
+        html { scroll-behavior: smooth; } 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--cream); color: var(--terracotta); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+        
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: normal; }
+        h1 { font-size: 4rem; margin-bottom: 1rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 1.5rem; position: relative; display: inline-block; }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--sage-green); }
+        p { font-size: 1.1rem; margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        
+        h2::after { content: ''; position: absolute; width: 50%; height: 3px; bottom: -5px; left: 25%; background-color: var(--sage-green); transition: width 0.3s ease; }
+        h2:hover::after { width: 100%; left: 0; }
+
+        /* --- NAVIGATION --- */
+        nav { background-color: var(--cream); padding: 1.5rem; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        nav a { color: var(--terracotta); text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; margin: 0 1.5rem; transition: color 0.3s ease; }
+        nav a:hover { color: var(--sage-green); }
+
+        /* --- LAYOUT SECTIONS --- */
+        section { padding: 5rem 2rem; text-align: center; scroll-margin-top: 80px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        
+        /* --- HOME / HERO --- */
+        .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: radial-gradient(circle at center, var(--cream) 0%, var(--cream-dark) 100%); }
+        .hero p.subtitle { font-size: 1.2rem; font-style: italic; color: var(--sage-green); }
+        
+        .btn { display: inline-block; margin-top: 2rem; padding: 1rem 2.5rem; background-color: var(--terracotta); color: var(--cream); text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; border-radius: 50px; transition: all 0.4s ease; border: 2px solid var(--terracotta); cursor: pointer; }
+        .btn:hover { background-color: transparent; color: var(--terracotta); box-shadow: 0 0 15px var(--sage-green); border-color: var(--sage-green); transform: translateY(-3px); }
+
+        /* --- PILLARS GRID --- */
+        .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .pillar-card { background-color: white; padding: 2.5rem 2rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.4s ease; border-bottom: 4px solid transparent; }
+        .pillar-card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--sage-green); box-shadow: 0 10px 25px rgba(137, 158, 139, 0.2); }
+
+        /* --- TEAM GRID --- */
+        .team-grid { display: flex; justify-content: center; gap: 4rem; margin-top: 4rem; flex-wrap: wrap; }
+        .team-member { transition: transform 0.3s ease; cursor: pointer; max-width: 300px; }
+        .team-member:hover { transform: translateY(-10px); }
+        .pic-frame { width: 220px; height: 220px; margin: 0 auto 1.5rem auto; border-radius: 50%; border: 5px solid var(--sage-green); object-fit: cover; background-color: #e8e4d8; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .pic-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .member-name { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 0.2rem; }
+        .member-role { color: var(--sage-green); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+
+        /* --- JOIN FORM & ROLES --- */
+        /* Changed from 45% to a fixed min-width so they wrap automatically */
+        .roles-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0; }
+        .role-box { background: white; padding: 2rem; border-radius: 15px; border-left: 5px solid var(--sage-green); box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left; }
+        .role-box h3 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+        .role-box p { font-size: 0.95rem; line-height: 1.6; }
+
+        .form-wrapper { background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left; max-width: 800px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; }
+        label { font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        
+        input[type="text"], input[type="email"], input[type="tel"], textarea { 
+            padding: 1rem; border: 1px solid #ccc; border-radius: 8px; font-family: var(--font-body); font-size: 1rem; outline: none; transition: 0.3s; width: 100%; 
+        }
+        
+        input:focus, textarea:focus { border-color: var(--sage-green); box-shadow: 0 0 8px rgba(137,158,139,0.3); }
+        input:invalid:focus, textarea:invalid:focus { border-color: var(--terracotta); box-shadow: 0 0 8px rgba(192,87,70,0.3); }
+        
+        textarea { resize: vertical; min-height: 150px; }
+        
+        .checkbox-group, .radio-group { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem; }
+        .radio-group { flex-direction: row; gap: 2rem; }
+        .checkbox-label, .radio-label { display: flex; align-items: center; font-weight: normal; cursor: pointer; }
+        .checkbox-label input, .radio-label input { margin-right: 10px; transform: scale(1.2); accent-color: var(--sage-green); }
+        
+        .submit-btn { width: 100%; margin-top: 1rem; }
+
+        /* --- FOOTER --- */
+        footer { background-color: var(--sage-green); color: var(--cream); padding: 3rem 2rem; text-align: center; margin-top: 3rem; }
+        footer a { color: var(--cream); font-weight: bold; text-decoration: underline; }
+        footer h3 { color: var(--cream); }
+
+        /* --- ANIMATIONS --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- MOBILE RESPONSIVENESS (NEW) --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 4rem 1.5rem; }
+            
+            nav { padding: 1rem; }
+            nav a { font-size: 1rem; margin: 0 0.8rem; }
+            
+            .roles-container { grid-template-columns: 1fr; gap: 1.5rem; } /* Forces roles to stack on mobile */
+            .role-box { padding: 1.5rem; }
+            
+            .form-wrapper { padding: 2rem 1.5rem; } /* Reduces form padding so it doesn't squish inputs */
+            .radio-group { flex-direction: column; gap: 0.8rem; } /* Stacks Yes/No radios on mobile */
+            
+            .team-grid { gap: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#team">The Paalam Team</a>
+        <a href="#join">Join Us</a>
+    </nav>
+
+    <div id="home">
+        <section class="hero">
+            <div class="container reveal">
+                <h1>Paalam</h1>
+                <p class="subtitle">Malayalam for "Bridge"</p><br>
+                <p>A youth-led initiative dedicated to dismantling the culture of silence and systemic stigma surrounding menstrual hygiene in India.</p>
+                <a href="#vision" class="btn">Discover Our Work</a>
+            </div>
+        </section>
+
+        <section id="vision">
+            <div class="container reveal">
+                <h2>Our Vision</h2>
+                <p>We act as the vital connector between deep-rooted silence and the essential knowledge required for menstrual health and dignity. Our goal is to transform menstruation from a source of shame into a recognized standard of health and public dignity.</p>
+            </div>
+        </section>
+
+        <section id="challenge" style="background-color: var(--cream-dark);">
+            <div class="container reveal">
+                <h2>The Challenge</h2>
+                <p>In many regions across India—particularly within rural and underserved communities—menstruation remains shrouded in a "culture of silence." When the topic is taboo, knowledge remains inaccessible, leading to improper hygiene practices, school dropouts, and long-term health complications.</p>
+                <h3 style="font-size: 2rem; margin-top: 2rem;">If not us, who? If not now, when?</h3>
+            </div>
+        </section>
+
+        <section id="pillars">
+            <div class="container reveal">
+                <h2>The Three-Pillar Framework</h2>
+                <p>To create lasting systemic change, Paalam operates through a multi-dimensional approach:</p>
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <h3>1. Community-Centric Education</h3>
+                        <p style="font-style: italic; color: var(--terracotta);">The Knowledge Bridge</p>
+                        <p>We facilitate immersive awareness sessions in schools, orphanages, and old-age homes to challenge cultural narratives that sustain stigma.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3>2. Resource Equity & Distribution</h3>
+                        <p style="font-style: italic; color: var(--terracotta);">The Access Bridge</p>
+                        <p>We lead strategic fundraising campaigns to procure and distribute sanitary products, ensuring "period poverty" never blocks education.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3>3. Narrative Shifting & Digital Advocacy</h3>
+                        <p style="font-style: italic; color: var(--terracotta);">The Awareness Bridge</p>
+                        <p>Through high-impact digital campaigns, we dismantle myths and build an ecosystem where menstrual health is discussed openly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section id="team" style="background-color: var(--cream-dark);">
+        <div class="container reveal">
+            <h2>Meet The Team</h2>
+            <p>Paalam is currently in its inaugural phase, hiring is currently going on!</p>
+            
+            <a href="#join" class="btn" style="margin-top: 1rem; margin-bottom: 2rem;">Join Our Team</a>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="pic-frame"><img src="amayaa.jpg" alt="Amayaa Menon - Founder"></div>
+                    <div class="member-name">Amayaa Menon</div>
+                    <div class="member-role">Founder & Director</div>
+                </div>
+                <div class="team-member">
+                    <div class="pic-frame"><img src="https://via.placeholder.com/200x200?text=Photo" alt="Ashwika Mane"></div>
+                    <div class="member-name">Ashwika Mane</div>
+                    <div class="member-role">Executive Assistant of the Founder</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="join">
+        <div class="container reveal">
+            <h2>Volunteer with Paalam</h2>
+            <p>Review our available team roles below and fill out the form to become a bridge builder.</p>
+
+            <div class="roles-container">
+                <div class="role-box">
+                    <h3>Marketing Team</h3>
+                    <p>Tasked with brainstorming ideas for content generation and managing Paalam's media presence. We need video/reel editors and creative minds to track trends and increase our social media reach.</p>
+                </div>
+                <div class="role-box">
+                    <h3>Design Team</h3>
+                    <p>The guardians of Paalam's visual and brand identity. You'll design social media posts, posters, and presentation decks. Canva experience is required; advanced program experience is highly appreciated!</p>
+                </div>
+                <div class="role-box">
+                    <h3>Outreach Team</h3>
+                    <p>Tasked with building Paalam's bridges (literally and figuratively!). You'll be our chief connection-makers—researching suitable NGOs, orphanages, and schools, contacting them via email/phone, and securing spaces for our sessions.</p>
+                </div>
+                <div class="role-box">
+                    <h3>Education Team</h3>
+                    <p>The boots on the ground. Tasked with conducting the sessions, explaining concepts, interacting with audiences, and making them feel comfortable. You'll also help build curriculum info and research session topics.</p>
+                </div>
+            </div>
+
+            <div class="form-wrapper">
+                <h2 style="text-align: center; display: block; margin-bottom: 2rem;">Application Form</h2>
+                <form action="https://formsubmit.co/paalam.initiative@gmail.com" method="POST">
+                    
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Paalam Volunteer Application!">
+
+                    <div class="form-group">
+                        <label for="name">1. Full Name</label>
+                        <input type="text" id="name" name="Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">2. Phone Number</label>
+                        <input type="tel" id="phone" name="Phone Number" pattern="[0-9]{10}" title="Please enter exactly 10 numeric digits" placeholder="e.g. 9876543210" required>
+                    </div>
+
+                    <div class="form-group" id="whatsapp-group" style="display: none; margin-top: -0.5rem; margin-bottom: 1.5rem;">
+                        <label style="color: var(--terracotta); font-style: italic;">↳ Can we contact you on this number on WhatsApp?</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="WhatsApp" value="Yes"> Yes</label>
+                            <label class="radio-label"><input type="radio" name="WhatsApp" value="No"> No</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">3. Email Address</label>
+                        <input type="email" id="email" name="Email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Please enter a valid email address (e.g., name@domain.com)" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="grade">4. Grade (Type N/A if not in school)</label>
+                        <input type="text" id="grade" name="Grade" placeholder="e.g., 11th Grade, College Freshman, N/A" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>5. Which teams would you like to join? (Choose up to 2)</label>
+                        <div class="checkbox-group" id="team-checkboxes">
+                            <label class="checkbox-label"><input type="checkbox" name="Teams[]" value="Marketing"> Marketing Team</label>
+                            <label class="checkbox-label"><input type="checkbox" name="Teams[]" value="Design"> Design Team</label>
+                            <label class="checkbox-label"><input type="checkbox" name="Teams[]" value="Outreach"> Outreach Team</label>
+                            <label class="checkbox-label"><input type="checkbox" name="Teams[]" value="Education"> Education Team</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>6. Are you currently working in any other initiatives?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="Other_Initiatives" value="Yes" id="radio-yes" required> Yes
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="Other_Initiatives" value="No" id="radio-no"> No
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="initiative-details-group" style="display: none;">
+                        <label for="initiative-details" style="color: var(--terracotta); font-style: italic;">↳ Which initiative are you a part of and which team?</label>
+                        <input type="text" id="initiative-details" name="Initiative_Details">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contribution">7. What do you think you can add to Paalam? (Max 1500 words)</label>
+                        <textarea id="contribution" name="Contribution" placeholder="Tell us about your skills, passion, and ideas..." maxlength="9000" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn submit-btn">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h3>Get In Touch</h3>
+            <p>Ready to help us build bridges? Contact Paalam at:<br>
+            <a href="mailto:paalam.initiative@gmail.com">paalam.initiative@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 150) reveals[i].classList.add("active");
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on load
+
+        // Checkbox Limiter Logic (Max 2 Teams)
+        const checkboxes = document.querySelectorAll('#team-checkboxes input[type="checkbox"]');
+        const maxAllowed = 2;
+        checkboxes.forEach(box => {
+            box.addEventListener('change', () => {
+                const checkedCount = document.querySelectorAll('#team-checkboxes input[type="checkbox"]:checked').length;
+                if (checkedCount >= maxAllowed) {
+                    checkboxes.forEach(cb => {
+                        if (!cb.checked) cb.disabled = true;
+                    });
+                } else {
+                    checkboxes.forEach(cb => cb.disabled = false);
+                }
+            });
+        });
+
+        // Phone Validation & WhatsApp Question Logic
+        const phoneInput = document.getElementById('phone');
+        const whatsappGroup = document.getElementById('whatsapp-group');
+        const whatsappRadios = document.querySelectorAll('input[name="WhatsApp"]');
+
+        phoneInput.addEventListener('input', () => {
+            if (/^\d{10}$/.test(phoneInput.value)) {
+                whatsappGroup.style.display = 'block';
+                whatsappRadios.forEach(radio => radio.required = true);
+            } else {
+                whatsappGroup.style.display = 'none';
+                whatsappRadios.forEach(radio => {
+                    radio.required = false; 
+                    radio.checked = false;
+                });
+            }
+        });
+
+        // Conditional Logic for "Other Initiatives" Question
+        const radioYes = document.getElementById('radio-yes');
+        const radioNo = document.getElementById('radio-no');
+        const detailsGroup = document.getElementById('initiative-details-group');
+        const detailsInput = document.getElementById('initiative-details');
+
+        function handleRadioChange() {
+            if (radioYes.checked) {
+                detailsGroup.style.display = 'flex';
+                detailsInput.required = true; 
+            } else {
+                detailsGroup.style.display = 'none';
+                detailsInput.required = false;
+                detailsInput.value = ''; 
+            }
+        }
+
+        radioYes.addEventListener('change', handleRadioChange);
+        radioNo.addEventListener('change', handleRadioChange);
+    </script>
+</body>
+</html>
