@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paalam | Bridging Menstrual Health</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- COLOR SCHEME & VARIABLES --- */
+        :root {
+            --terracotta: #C05746;
+            --sage-green: #899E8B;
+            --cream: #F5F2E9;
+            --cream-dark: #e8e4d8;
+            
+            /* Replace 'DM Serif Display' with 'TAN Meringue' once you have the font file */
+            --font-heading: 'DM Serif Display', serif; 
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* --- BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--terracotta);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: normal;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1 { font-size: 4rem; margin-bottom: 1rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 1.5rem; position: relative; display: inline-block; }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--sage-green); }
+        p { font-size: 1.1rem; margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+
+        /* Underline accent for headings */
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -5px;
+            left: 25%;
+            background-color: var(--sage-green);
+            transition: width 0.3s ease;
+        }
+        h2:hover::after { width: 100%; left: 0; }
+
+        /* --- LAYOUT & SECTIONS --- */
+        section {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .hero p.subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--sage-green);
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background-color: var(--terracotta);
+            color: var(--cream);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 2px solid var(--terracotta);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--terracotta);
+            box-shadow: 0 0 15px var(--sage-green);
+            border-color: var(--sage-green);
+            transform: translateY(-3px);
+        }
+
+        /* --- PILLARS GRID --- */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pillar-card {
+            background-color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            border-bottom: 4px solid transparent;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--sage-green);
+            box-shadow: 0 10px 25px rgba(137, 158, 139, 0.2); /* Sage green glow */
+        }
+
+        /* --- ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 4rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container reveal">
+            <h1>Paalam</h1>
+            <p class="subtitle">Malayalam for "Bridge"</p>
+            <br>
+            <p>A youth-led initiative dedicated to dismantling the culture of silence and systemic stigma surrounding menstrual hygiene in India.</p>
+            <a href="#vision" class="btn">Discover Our Work</a>
+        </div>
+    </section>
+
+    <section id="vision">
+        <div class="container reveal">
+            <h2>Our Vision</h2>
+            <p>We act as the vital connector between deep-rooted silence and the essential knowledge required for menstrual health and dignity. Our goal is to transform menstruation from a source of shame into a recognized standard of health and public dignity.</p>
+            <p>By operating at the intersection of education, equity, and advocacy, we bridge the gap between deep-seated taboos and essential reproductive knowledge.</p>
+        </div>
+    </section>
+
+    <section id="challenge" style="background-color: var(--cream-dark);">
+        <div class="container reveal">
+            <h2>The Challenge</h2>
+            <p>In many regions across India—particularly within rural and underserved communities—menstruation remains shrouded in a "culture of silence."</p>
+            <p>When the topic is taboo, knowledge remains inaccessible, leading to improper hygiene practices, school dropouts, and long-term health complications. We are faced with a critical question:</p>
+            <h3 style="font-size: 2rem; margin-top: 2rem;">If not us, who? If not now, when?</h3>
+        </div>
+    </section>
+
+    <section id="pillars">
+        <div class="container reveal">
+            <h2>The Three-Pillar Framework</h2>
+            <p>To create lasting systemic change, Paalam operates through a multi-dimensional approach to transform the landscape of menstrual health.</p>
+            
+            <div class="pillars-grid">
+                <div class="pillar-card reveal">
+                    <h3>1. Community-Centric Education</h3>
+                    <p style="font-size: 0.95rem; font-style: italic; margin-bottom: 1rem; color: var(--terracotta);">The Knowledge Bridge</p>
+                    <p style="font-size: 0.95rem;">We facilitate immersive awareness sessions in spaces often overlooked by mainstream healthcare, including schools, orphanages, and old-age homes. By engaging in intergenerational dialogue, we don't just teach biology; we challenge the cultural narratives that sustain stigma.</p>
+                </div>
+
+                <div class="pillar-card reveal" style="transition-delay: 0.2s;">
+                    <h3>2. Resource Equity & Distribution</h3>
+                    <p style="font-size: 0.95rem; font-style: italic; margin-bottom: 1rem; color: var(--terracotta);">The Access Bridge</p>
+                    <p style="font-size: 0.95rem;">Awareness is ineffective without the means to act. We lead strategic fundraising campaigns to procure and distribute sanitary products to those in need. Our focus is on ensuring that "period poverty" never stands in the way of a person’s education or daily life.</p>
+                </div>
+
+                <div class="pillar-card reveal" style="transition-delay: 0.4s;">
+                    <h3>3. Narrative Shifting & Digital Advocacy</h3>
+                    <p style="font-size: 0.95rem; font-style: italic; margin-bottom: 1rem; color: var(--terracotta);">The Awareness Bridge</p>
+                    <p style="font-size: 0.95rem;">Through high-impact digital campaigns and storytelling, we bring the conversation into the public square. By leveraging social media to share facts, dismantle myths, and amplify voices, we are building a digital ecosystem where menstrual health is discussed openly and without apology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll reveal animations
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150; // trigger point
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load to show elements already in viewport
+        reveal();
+    </script>
+</body>
+</html>
