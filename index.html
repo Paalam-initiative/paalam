@@ -25,7 +25,7 @@
         h1, h2, h3 { font-family: var(--font-heading); font-weight: normal; }
         h1 { font-size: 4rem; margin-bottom: 1rem; }
         h2 { font-size: 2.5rem; margin-bottom: 1.5rem; position: relative; display: inline-block; }
-        h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--sage-green); }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--sage-green); line-height: 1.3;}
         p { font-size: 1.1rem; margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
         
         h2::after { content: ''; position: absolute; width: 50%; height: 3px; bottom: -5px; left: 25%; background-color: var(--sage-green); transition: width 0.3s ease; }
@@ -62,10 +62,9 @@
         .member-role { color: var(--sage-green); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
 
         /* --- JOIN FORM & ROLES --- */
-        /* Changed from 45% to a fixed min-width so they wrap automatically */
         .roles-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0; }
         .role-box { background: white; padding: 2rem; border-radius: 15px; border-left: 5px solid var(--sage-green); box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left; }
-        .role-box h3 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+        .role-box h3 { font-size: 1.6rem; margin-bottom: 0.8rem; }
         .role-box p { font-size: 0.95rem; line-height: 1.6; }
 
         .form-wrapper { background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left; max-width: 800px; margin: 0 auto; }
@@ -76,6 +75,7 @@
             padding: 1rem; border: 1px solid #ccc; border-radius: 8px; font-family: var(--font-body); font-size: 1rem; outline: none; transition: 0.3s; width: 100%; 
         }
         
+        /* Input Validation Styles */
         input:focus, textarea:focus { border-color: var(--sage-green); box-shadow: 0 0 8px rgba(137,158,139,0.3); }
         input:invalid:focus, textarea:invalid:focus { border-color: var(--terracotta); box-shadow: 0 0 8px rgba(192,87,70,0.3); }
         
@@ -97,7 +97,7 @@
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- MOBILE RESPONSIVENESS (NEW) --- */
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
             h1 { font-size: 2.8rem; }
             h2 { font-size: 2rem; }
@@ -106,11 +106,11 @@
             nav { padding: 1rem; }
             nav a { font-size: 1rem; margin: 0 0.8rem; }
             
-            .roles-container { grid-template-columns: 1fr; gap: 1.5rem; } /* Forces roles to stack on mobile */
+            .roles-container { grid-template-columns: 1fr; gap: 1.5rem; }
             .role-box { padding: 1.5rem; }
             
-            .form-wrapper { padding: 2rem 1.5rem; } /* Reduces form padding so it doesn't squish inputs */
-            .radio-group { flex-direction: column; gap: 0.8rem; } /* Stacks Yes/No radios on mobile */
+            .form-wrapper { padding: 2rem 1.5rem; }
+            .radio-group { flex-direction: column; gap: 0.8rem; }
             
             .team-grid { gap: 2.5rem; }
         }
@@ -203,20 +203,20 @@
 
             <div class="roles-container">
                 <div class="role-box">
-                    <h3>Marketing Team</h3>
-                    <p>Tasked with brainstorming ideas for content generation and managing Paalam's media presence. We need video/reel editors and creative minds to track trends and increase our social media reach.</p>
+                    <h3>Marketing Team: The Voice of Paalam</h3>
+                    <p>Our Marketing Team shapes how the world sees and hears us. As the drivers of Paalam's media presence, they ensure our message breaks through the silence. Composed of creative minds, trend-spotters, and video/reel editors, this team brainstorms fresh content and sparks meaningful online conversations to expand our reach. Their creativity is our megaphone.</p>
                 </div>
                 <div class="role-box">
-                    <h3>Design Team</h3>
-                    <p>The guardians of Paalam's visual and brand identity. You'll design social media posts, posters, and presentation decks. Canva experience is required; advanced program experience is highly appreciated!</p>
+                    <h3>Design Team: The Visionaries</h3>
+                    <p>Our Design Team acts as the guardians of Paalam's visual and brand identity. Because art is a powerful tool for advocacy, this team creates everything from striking social media posts to engaging presentation decks that directly challenge the stigma. Using Canva and advanced design programs, they are the visionaries who paint our mission into reality.</p>
                 </div>
                 <div class="role-box">
-                    <h3>Outreach Team</h3>
-                    <p>Tasked with building Paalam's bridges (literally and figuratively!). You'll be our chief connection-makers—researching suitable NGOs, orphanages, and schools, contacting them via email/phone, and securing spaces for our sessions.</p>
+                    <h3>Outreach Team: The Bridge Builders</h3>
+                    <p>These are Paalam's bridge builders (literally!). As our chief connection-makers, the Outreach Team is the vital link between our mission and the community. They actively research and build relationships with NGOs, orphanages, and schools. By reaching out, pitching our mission, and securing spaces for our sessions, they build the very bridges we walk across.</p>
                 </div>
                 <div class="role-box">
-                    <h3>Education Team</h3>
-                    <p>The boots on the ground. Tasked with conducting the sessions, explaining concepts, interacting with audiences, and making them feel comfortable. You'll also help build curriculum info and research session topics.</p>
+                    <h3>Education Team: The Heartbeat of Paalam</h3>
+                    <p>Our Education Team provides the boots on the ground, turning our mission into direct action. Driven by empathy and boldness, they are at the forefront—conducting our sessions, breaking down complex concepts, and ensuring audiences feel seen and comfortable. From researching session topics to building out our curriculum, they are the catalysts for lasting, intergenerational change.</p>
                 </div>
             </div>
 
@@ -336,14 +336,15 @@
         const whatsappRadios = document.querySelectorAll('input[name="WhatsApp"]');
 
         phoneInput.addEventListener('input', () => {
+            // Regex checks if the input is exactly 10 numbers
             if (/^\d{10}$/.test(phoneInput.value)) {
                 whatsappGroup.style.display = 'block';
-                whatsappRadios.forEach(radio => radio.required = true);
+                whatsappRadios.forEach(radio => radio.required = true); 
             } else {
                 whatsappGroup.style.display = 'none';
                 whatsappRadios.forEach(radio => {
                     radio.required = false; 
-                    radio.checked = false;
+                    radio.checked = false; 
                 });
             }
         });
