@@ -42,6 +42,18 @@
         
         /* --- HOME / HERO --- */
         .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: radial-gradient(circle at center, var(--cream) 0%, var(--cream-dark) 100%); }
+        
+        /* Image Header Styles */
+        .hero-logo {
+            max-width: 100%;
+            width: 700px; /* Keeps it perfectly sized on desktop */
+            height: auto;
+            margin-bottom: 0.5rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .hero p.subtitle { font-size: 1.2rem; font-style: italic; color: var(--sage-green); }
         
         .btn { display: inline-block; margin-top: 2rem; padding: 1rem 2.5rem; background-color: var(--terracotta); color: var(--cream); text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; border-radius: 50px; transition: all 0.4s ease; border: 2px solid var(--terracotta); cursor: pointer; }
@@ -99,7 +111,7 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
+            .hero-logo { width: 90%; } /* Ensures the image doesn't overflow on small screens */
             h2 { font-size: 2rem; }
             section { padding: 4rem 1.5rem; }
             
@@ -127,7 +139,7 @@
     <div id="home">
         <section class="hero">
             <div class="container reveal">
-                <h1>Paalam</h1>
+                <img src="paalam-header.jpg" alt="Paalam - Menstrual Health Initiative" class="hero-logo">
                 <p class="subtitle">Malayalam for "Bridge"</p><br>
                 <p>A youth-led initiative dedicated to dismantling the culture of silence and systemic stigma surrounding menstrual hygiene in India.</p>
                 <a href="#vision" class="btn">Discover Our Work</a>
@@ -188,7 +200,7 @@
                     <div class="member-role">Founder & Director</div>
                 </div>
                 <div class="team-member">
-                    <div class="pic-frame"><img src="https://via.placeholder.com/200x200?text=Photo" alt="Ashwika Mane"></div>
+                    <div class="pic-frame"><img src="ashwika.jpg" alt="Ashwika Mane - Executive Assistant"></div>
                     <div class="member-name">Ashwika Mane</div>
                     <div class="member-role">Executive Assistant of the Founder</div>
                 </div>
@@ -336,7 +348,6 @@
         const whatsappRadios = document.querySelectorAll('input[name="WhatsApp"]');
 
         phoneInput.addEventListener('input', () => {
-            // Regex checks if the input is exactly 10 numbers
             if (/^\d{10}$/.test(phoneInput.value)) {
                 whatsappGroup.style.display = 'block';
                 whatsappRadios.forEach(radio => radio.required = true); 
@@ -371,3 +382,6 @@
     </script>
 </body>
 </html>
+
+
+  
