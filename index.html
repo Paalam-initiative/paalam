@@ -42,18 +42,6 @@
         
         /* --- HOME / HERO --- */
         .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: radial-gradient(circle at center, var(--cream) 0%, var(--cream-dark) 100%); }
-        
-        /* Image Header Styles */
-        .hero-logo {
-            max-width: 100%;
-            width: 700px; 
-            height: auto;
-            margin-bottom: 0.5rem;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         .hero p.subtitle { font-size: 1.2rem; font-style: italic; color: var(--sage-green); }
         
         .btn { display: inline-block; margin-top: 2rem; padding: 1rem 2.5rem; background-color: var(--terracotta); color: var(--cream); text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; border-radius: 50px; transition: all 0.4s ease; border: 2px solid var(--terracotta); cursor: pointer; }
@@ -111,7 +99,7 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .hero-logo { width: 90%; } 
+            h1 { font-size: 2.8rem; }
             h2 { font-size: 2rem; }
             section { padding: 4rem 1.5rem; }
             
@@ -139,7 +127,7 @@
     <div id="home">
         <section class="hero">
             <div class="container reveal">
-                <img src="paalam-header.jpg" alt="Paalam - Menstrual Health Initiative" class="hero-logo">
+                <h1>Paalam</h1>
                 <p class="subtitle">Malayalam for "Bridge"</p><br>
                 <p>A youth-led initiative dedicated to dismantling the culture of silence and systemic stigma surrounding menstrual hygiene in India.</p>
                 <a href="#vision" class="btn">Discover Our Work</a>
@@ -179,7 +167,7 @@
                     <div class="pillar-card">
                         <h3>3. Narrative Shifting & Digital Advocacy</h3>
                         <p style="font-style: italic; color: var(--terracotta);">The Awareness Bridge</p>
-                        <p>Through high-impact digital campaigns, we dismantle myths and build an ecosystem where menstrual health is discussed openly.</p>
+                        <p>Through high‑impact digital campaigns, we dismantle myths and build an ecosystem where menstrual health is discussed openly.</p>
                     </div>
                 </div>
             </div>
@@ -189,7 +177,7 @@
     <section id="team" style="background-color: var(--cream-dark);">
         <div class="container reveal">
             <h2>Meet The Team</h2>
-            <p>Paalam is currently in its inaugural phase, hiring is currently going on!</p>
+            <p>Paalam is currently in its inaugural phase; hiring is currently ongoing!</p>
             
             <a href="#join" class="btn" style="margin-top: 1rem; margin-bottom: 2rem;">Join Our Team</a>
 
@@ -200,9 +188,9 @@
                     <div class="member-role">Founder & Director</div>
                 </div>
                 <div class="team-member">
-                    <div class="pic-frame"><img src="ashwika.jpg" alt="Ashwika Mane - Chief Operations Officer"></div>
+                    <div class="pic-frame"><img src="https://via.placeholder.com/200x200?text=Photo" alt="Ashwika Mane"></div>
                     <div class="member-name">Ashwika Mane</div>
-                    <div class="member-role">Chief Operations Officer</div>
+                    <div class="member-role">Executive Assistant of the Founder</div>
                 </div>
             </div>
         </div>
@@ -235,15 +223,18 @@
             <div class="form-wrapper">
                 <h2 style="text-align: center; display: block; margin-bottom: 2rem;">Application Form</h2>
                 <form action="https://formsubmit.co/paalam.initiative@gmail.com" method="POST">
-                    
+
+                    <!-- FormSubmit hidden fields -->
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="New Paalam Volunteer Application!">
+                    <!-- Optional redirect page -->
+                    <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
 
                     <div class="form-group">
                         <label for="name">1. Full Name</label>
                         <input type="text" id="name" name="Name" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="phone">2. Phone Number</label>
                         <input type="tel" id="phone" name="Phone Number" pattern="[0-9]{10}" title="Please enter exactly 10 numeric digits" placeholder="e.g. 9876543210" required>
@@ -259,14 +250,14 @@
 
                     <div class="form-group">
                         <label for="email">3. Email Address</label>
-                        <input type="email" id="email" name="Email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Please enter a valid email address (e.g., name@domain.com)" required>
+                        <input type="email" id="email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" title="Please enter a valid email address (e.g., name@domain.com)" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="grade">4. Grade (Type N/A if not in school)</label>
                         <input type="text" id="grade" name="Grade" placeholder="e.g., 11th Grade, College Freshman, N/A" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label>5. Which teams would you like to join? (Choose up to 2)</label>
                         <div class="checkbox-group" id="team-checkboxes">
@@ -320,7 +311,9 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 150) reveals[i].classList.add("active");
+                if (elementTop < windowHeight - 150) {
+                    reveals[i].classList.add("active");
+                }
             }
         }
         window.addEventListener("scroll", reveal);
@@ -348,7 +341,8 @@
         const whatsappRadios = document.querySelectorAll('input[name="WhatsApp"]');
 
         phoneInput.addEventListener('input', () => {
-            if (/^\d{10}$/.test(phoneInput.value)) {
+            // Regex checks if the input is exactly 10 numbers
+            if (/^d{10}$/.test(phoneInput.value.trim())) {
                 whatsappGroup.style.display = 'block';
                 whatsappRadios.forEach(radio => radio.required = true); 
             } else {
@@ -382,6 +376,10 @@
     </script>
 </body>
 </html>
+
+
+   
+
      
 
 
