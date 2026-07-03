@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nominate a Community | Paalam</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--t:#C05746;--s:#899E8B;--c:#F5F2E9;--cd:#e8e4d8;--fh:"DM Serif Display",serif;--fb:"Inter",sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--c);color:var(--t);font-family:var(--fb);line-height:1.6;overflow-x:hidden;cursor:none}
+body::before{content:"";position:fixed;inset:0;z-index:9990;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");opacity:.35;mix-blend-mode:multiply}
+#cur{position:fixed;width:12px;height:12px;background:var(--t);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:multiply}
+#cur-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--t);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s;opacity:.42}
+body.ch #cur{width:28px;height:28px;background:var(--s)}
+body.ch #cur-ring{width:54px;height:54px;opacity:.16}
+#sp{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,var(--t),var(--s));z-index:9996;transition:width .08s linear}
+nav{position:fixed;top:3px;left:0;right:0;z-index:1000;background:rgba(245,242,233,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 24px rgba(192,87,70,.07)}
+.nav-logo{font-family:var(--fh);font-size:1.2rem;color:var(--t);text-decoration:none;letter-spacing:.02em}
+.nav-links{display:flex;gap:2.5rem}
+nav a{color:var(--t);text-decoration:none;font-family:var(--fb);font-size:.85rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;position:relative;transition:color .3s}
+nav a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--s);transition:width .35s ease}
+nav a:hover{color:var(--s)}
+nav a:hover::after{width:100%}
+nav a.active{color:var(--s)}
+nav a.active::after{width:100%}
+section{padding:7rem 2rem;text-align:center;scroll-margin-top:72px}
+.container{max-width:1100px;margin:0 auto}
+h2{font-family:var(--fh);font-size:clamp(2rem,4.5vw,3rem);font-weight:normal;margin-bottom:1.5rem;position:relative;display:inline-block;line-height:1.2}
+h2::after{content:"";position:absolute;bottom:-6px;left:25%;width:50%;height:2px;background:var(--s);transition:width .4s ease,left .4s ease}
+h2:hover::after{width:100%;left:0}
+h3{font-family:var(--fh);font-size:1.45rem;color:var(--s);margin-bottom:.8rem;line-height:1.3}
+p{font-size:1.05rem;max-width:740px;margin:0 auto 1.5rem;color:inherit;line-height:1.75}
+.hl{color:var(--t);font-style:italic;font-family:var(--fh)}
+.hl-s{color:var(--s);font-style:italic;font-family:var(--fh)}
+.btn{display:inline-block;margin-top:2rem;padding:.9rem 2.6rem;background:var(--t);color:var(--c);text-decoration:none;font-family:var(--fh);font-size:1.1rem;border-radius:50px;border:2px solid var(--t);transition:border-color .4s ease;cursor:none;position:relative;overflow:hidden;will-change:transform}
+.btn::before{content:"";position:absolute;inset:0;background:var(--s);transform:scaleX(0);transform-origin:right;transition:transform .4s ease;z-index:0}
+.btn sp{position:relative;z-index:1;display:block}
+.btn:hover::before{transform:scaleX(1);transform-origin:left}
+.btn:hover{border-color:var(--s)}
+.marquee-band{overflow:hidden;white-space:nowrap;background:var(--t);padding:1.3rem 0;position:relative}
+.marquee-track{display:inline-flex;animation:mscroll 26s linear infinite}
+.marquee-track span{font-family:var(--fh);font-size:clamp(1.25rem,2.8vw,2rem);color:var(--c);padding:0 2.2rem;white-space:nowrap;letter-spacing:.02em}
+.marquee-track span em{color:rgba(245,242,233,.45);font-style:normal;padding:0 0 0 2.2rem}
+@keyframes mscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-band.alt{background:var(--s)}
+.reveal{opacity:0;transform:translateY(48px);transition:opacity .85s ease,transform .85s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.15s}.rd2{transition-delay:.3s}.rd3{transition-delay:.45s}
+footer{background:var(--s);color:var(--c);padding:0 2rem 3.5rem;text-align:center;overflow:hidden}
+.ftag-wrap{padding:5.5rem 2rem 4rem}
+.ftag{font-family:var(--fh);font-size:clamp(2.6rem,9vw,6.5rem);color:var(--t);line-height:1.05;letter-spacing:.01em;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
+.ftag.active{opacity:1;transform:translateY(0)}
+footer h3{color:var(--c);font-family:var(--fh);font-size:2rem;margin-bottom:1rem;margin-top:2.5rem}
+footer p{color:rgba(245,242,233,.85);max-width:480px}
+footer a{color:var(--c);font-weight:600}
+.fbot{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(245,242,233,.18);font-size:.78rem;color:rgba(245,242,233,.5);letter-spacing:.07em;text-transform:uppercase}
+label{font-weight:600;margin-bottom:.4rem;font-size:.92rem}
+input[type=text],input[type=email],input[type=tel],select,textarea{padding:.9rem 1rem;border:1.5px solid #ddd;border-radius:10px;font-family:var(--fb);font-size:.98rem;outline:none;transition:border-color .3s,box-shadow .3s;width:100%;background:white}
+input:focus,textarea:focus,select:focus{border-color:var(--s);box-shadow:0 0 0 3px rgba(137,158,139,.14)}
+textarea{resize:vertical;min-height:140px}
+.fg{margin-bottom:1.4rem;display:flex;flex-direction:column}
+.rg{display:flex;flex-direction:row;gap:2rem;margin-top:.4rem}
+.rl{display:flex;align-items:center;font-weight:normal;cursor:none}
+.rl input{margin-right:10px;transform:scale(1.2);accent-color:var(--s)}
+.fw{background:white;padding:3rem;border-radius:18px;box-shadow:0 4px 40px rgba(0,0,0,.09);text-align:left;max-width:780px;margin:2rem auto 0}
+.bstep{padding:.75rem 1.8rem;border-radius:50px;font-family:var(--fh);font-size:1rem;cursor:none;transition:all .3s;border:2px solid var(--t)}
+.bsub{background:var(--t);color:var(--c)}.bsub:hover{background:var(--s);border-color:var(--s)}
+@media(max-width:900px){body{cursor:auto}#cur,#cur-ring{display:none}.rg{flex-direction:column;gap:.7rem}.nav-links{gap:1.2rem}nav{padding:1rem 1.5rem}}
+@media(max-width:600px){section{padding:5rem 1.5rem}.fw{padding:2rem 1.5rem}.nav-links{gap:.8rem}nav a{font-size:.76rem}}
+
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.page-hero{padding:9rem 2rem 5rem;text-align:center;background:var(--c)}
+.page-hero h1{font-family:var(--fh);font-size:clamp(2.5rem,6vw,4rem);color:var(--t);font-weight:normal;margin-bottom:1rem;opacity:0;animation:fu .9s ease forwards .2s}
+.page-hero p{opacity:0;animation:fu .9s ease forwards .5s}
+.nom-layout{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;max-width:960px;margin:1rem auto 0;align-items:start}
+.nom-why{text-align:left}
+.nom-why h3{color:var(--t);font-size:1.5rem;margin-bottom:1.2rem}
+.nom-why p{max-width:none;font-size:.98rem;color:#555;margin:0 0 1rem}
+.nom-reasons{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
+.nom-reason{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:white;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:transform .3s}
+.nom-reason:hover{transform:translateX(6px)}
+.nom-reason-icon{width:40px;height:40px;border-radius:10px;background:var(--t);display:flex;align-items:center;justify-content:center;color:var(--c);font-size:1.1rem;flex-shrink:0}
+.nom-reason p{margin:0;font-size:.88rem;line-height:1.55;color:var(--t);max-width:none}
+.nom-reason strong{color:var(--t);font-weight:600}
+.nom-form{background:white;padding:2.4rem;border-radius:18px;box-shadow:0 4px 28px rgba(0,0,0,.07);text-align:left}
+.nom-form label{color:var(--t);font-size:.9rem}
+.nom-form .fg{margin-bottom:1.3rem}
+.nom-submit{background:var(--t);color:var(--c);border:2px solid var(--t);padding:.85rem 2rem;border-radius:50px;font-family:var(--fh);font-size:1rem;cursor:none;transition:all .3s;width:100%;margin-top:.5rem}
+.nom-submit:hover{background:var(--s);border-color:var(--s)}
+@media(max-width:900px){.nom-layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<div id="sp"></div>
+<nav>
+  <a href="index.html" class="nav-logo">Paalam</a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="work.html">Our Work</a><a href="join.html">Get Involved</a><a href="story.html">Your Story</a><a href="nominate.html" class="active">Nominate</a></div>
+</nav>
+
+<div class="page-hero">
+  <h1>Nominate a community</h1>
+  <p>Know a school, orphanage, or neighbourhood that needs Paalam? Running an initiative and want to collaborate? Every bridge we build starts because someone knew where to build it.</p>
+</div>
+
+<section style="padding-top:1rem">
+  <div class="container">
+    <div class="nom-layout">
+      <div class="nom-why reveal">
+        <h3>Why nominations matter</h3>
+        <p>We arrive because someone who understands a community told us it was time. That someone could be you.</p>
+        <div class="nom-reasons">
+          <div class="nom-reason"><div class="nom-reason-icon">&#127919;</div><div><p><strong>Your network becomes our pipeline.</strong> One nomination from you reaches a community Paalam would never have found through a Google search.</p></div></div>
+          <div class="nom-reason"><div class="nom-reason-icon">&#127757;</div><div><p><strong>Bridges go where they are needed most.</strong> Anonymous nominations are welcome. We care about the community, not the referrer's identity.</p></div></div>
+        </div>
+      </div>
+      <div class="nom-form reveal rd1">
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="e9797028-b1a5-4166-8c50-9b7b65e1f968">
+          <input type="hidden" name="subject" value="Paalam Community Nomination / Partnership">
+          <div class="fg"><label>1. What are you nominating?</label><select name="NominationType" required><option value="">Select one</option><option value="A school">A school</option><option value="An NGO or shelter">An NGO or shelter</option><option value="A community or neighbourhood">A community or neighbourhood</option><option value="My own initiative (partnership)">My own initiative (partnership)</option></select></div>
+          <div class="fg"><label>2. Name and location</label><input type="text" name="NameAndLocation" placeholder="e.g. Shanti Vidya Niketan, Wayanad, Kerala" required></div>
+          <div class="fg"><label>3. Why does this community need support?</label><textarea name="WhySupport" placeholder="A sentence or two is enough. Number of students, current access to menstrual products, whether the topic has ever been discussed there." required></textarea></div>
+          <div class="fg"><label>4. Your contact info <span style="font-weight:400;opacity:.65">(optional, in case we want to follow up)</span></label><input type="text" name="NominatorContact" placeholder="Phone, email, or Instagram handle"></div>
+          <div class="fg"><label>5. Your relationship to this place</label><div class="rg" style="flex-direction:column;gap:.6rem;margin-top:.4rem"><label class="rl"><input type="radio" name="Affiliation" value="I am affiliated (staff, volunteer, member)" required> I am affiliated (staff, volunteer, or member)</label><label class="rl"><input type="radio" name="Affiliation" value="I am suggesting it externally"> I am suggesting it externally</label><label class="rl"><input type="radio" name="Affiliation" value="I run an initiative and want to partner"> I run an initiative and want to partner</label></div></div>
+          <button type="submit" class="nom-submit">Submit nomination</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ftag-wrap">
+    <p class="ftag reveal" id="ftag-text">Build bridges.<br>Break silence.</p>
+  </div>
+  <div class="container">
+    <h3>Get in touch</h3>
+    <p>Ready to help us build bridges across India?<br><a href="mailto:paalam.initiative@gmail.com">paalam.initiative@gmail.com</a></p>
+    <p class="fbot">&#169; 2026 Paalam Initiative. All rights reserved. Built with purpose.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+var lenis=new Lenis({duration:1.3,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smooth:true});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+var cur=document.getElementById("cur"),curR=document.getElementById("cur-ring"),mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});
+(function aC(){cur.style.left=mx+"px";cur.style.top=my+"px";rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+"px";curR.style.top=ry+"px";requestAnimationFrame(aC)})();
+document.querySelectorAll("a,button,.pc,.rb,.tm,.do-card,.serve-item,.vt-btn,.pt-item,.nom-reason").forEach(function(el){el.addEventListener("mouseenter",function(){document.body.classList.add("ch")});el.addEventListener("mouseleave",function(){document.body.classList.remove("ch")})});
+window.addEventListener("scroll",function(){var p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;document.getElementById("sp").style.width=p+"%"},{passive:true});
+document.querySelectorAll(".btn").forEach(function(b){b.addEventListener("mousemove",function(e){var r=b.getBoundingClientRect();var dx=e.clientX-r.left-r.width/2;var dy=e.clientY-r.top-r.height/2;b.style.transform="translate("+(dx*.3)+"px,"+(dy*.3)+"px)"});b.addEventListener("mouseleave",function(){b.style.transition="transform .65s cubic-bezier(.25,.46,.45,.94)";b.style.transform="translate(0,0)";setTimeout(function(){b.style.transition=""},650)})});
+var ro=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)e.target.classList.add("active")})},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(function(el){ro.observe(el)});
+</script>
+
+</body>
+</html>
