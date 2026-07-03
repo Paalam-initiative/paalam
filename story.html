@@ -85,6 +85,13 @@ textarea{resize:vertical;min-height:140px}
 .story-form select option{background:var(--t);color:var(--c)}
 .story-form .fg{margin-bottom:1.4rem}
 .story-form .rl{color:var(--c)}
+.consent-options{display:flex;flex-direction:column;gap:.5rem;margin-top:.6rem}
+.consent-opt{display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;border:1.5px solid rgba(245,242,233,.15);background:rgba(245,242,233,.04);transition:background .25s,border-color .25s;cursor:none}
+.consent-opt:hover{background:rgba(245,242,233,.08);border-color:rgba(245,242,233,.3)}
+.consent-opt input[type=radio]{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:2px solid rgba(245,242,233,.4);border-radius:50%;margin:0;flex-shrink:0;position:relative;transition:border-color .2s;cursor:none}
+.consent-opt input[type=radio]:checked{border-color:var(--c)}
+.consent-opt input[type=radio]:checked::after{content:"";position:absolute;top:3px;left:3px;width:8px;height:8px;background:var(--c);border-radius:50%}
+.consent-opt span{font-size:.92rem;color:rgba(245,242,233,.85);font-weight:400;line-height:1.3}
 .story-submit{background:var(--c);color:var(--t);border:2px solid var(--c);padding:.85rem 2.2rem;border-radius:50px;font-family:var(--fh);font-size:1rem;cursor:none;transition:all .3s;width:100%;margin-top:.5rem}
 .story-submit:hover{background:transparent;color:var(--c)}
 .story-note{text-align:center;margin-top:1.8rem;font-size:.8rem;color:rgba(245,242,233,.5);max-width:500px;margin-left:auto;margin-right:auto}
@@ -111,9 +118,10 @@ textarea{resize:vertical;min-height:140px}
         <input type="hidden" name="access_key" value="e9797028-b1a5-4166-8c50-9b7b65e1f968">
         <input type="hidden" name="subject" value="Paalam Story Spotlight Submission">
         <div class="fg"><label>1. Your story <span style="font-weight:400;opacity:.7">(required)</span></label><textarea name="Story" placeholder="Tell us about a period experience: a myth you were told, a taboo you faced, or a moment things changed for you. Two to three sentences is perfect." required></textarea></div>
-        <div class="fg"><label>2. Can we share this on our Instagram?</label><div class="rg" style="flex-direction:column;gap:.6rem;margin-top:.5rem"><label class="rl"><input type="radio" name="ShareConsent" value="Yes, fully anonymous" checked> Yes, fully anonymous</label><label class="rl"><input type="radio" name="ShareConsent" value="Yes, with my first name"> Yes, with my first name</label><label class="rl"><input type="radio" name="ShareConsent" value="No, just wanted to share"> No, just wanted to share</label></div></div>
-        <div class="fg"><label>3. Where are you from? <span style="font-weight:400;opacity:.7">(optional)</span></label><input type="text" name="Location" placeholder="City or state, helps us show our geographic reach"></div>
-        <div class="fg"><label>4. Age range <span style="font-weight:400;opacity:.7">(optional)</span></label><select name="AgeRange"><option value="">Prefer not to say</option><option value="Under 18">Under 18</option><option value="18-24">18 to 24</option><option value="25+">25+</option></select></div>
+        <div class="fg"><label>2. Can we share this on our Instagram?</label><div class="consent-options"><label class="consent-opt"><input type="radio" name="ShareConsent" value="Yes, fully anonymous" checked><span>Yes, fully anonymous</span></label><label class="consent-opt"><input type="radio" name="ShareConsent" value="Yes, with my first name"><span>Yes, with my first name</span></label><label class="consent-opt"><input type="radio" name="ShareConsent" value="No, just wanted to share"><span>No, just wanted to share</span></label></div></div>
+        <div class="fg" id="name-field" style="display:none"><label>3. Your name <span style="font-weight:400;opacity:.7">(only if you chose to share it)</span></label><input type="text" name="StoryName" id="storyName" placeholder="First name is enough"></div>
+        <div class="fg"><label class="q-loc">4. Where are you from? <span style="font-weight:400;opacity:.7">(optional)</span></label><input type="text" name="Location" placeholder="City or state, helps us show our geographic reach"></div>
+        <div class="fg"><label>5. Age range <span style="font-weight:400;opacity:.7">(optional)</span></label><select name="AgeRange"><option value="">Prefer not to say</option><option value="Under 18">Under 18</option><option value="18-24">18 to 24</option><option value="25+">25+</option></select></div>
         <button type="submit" class="story-submit">Share this story</button>
       </form>
       <p class="story-note">Every submission stays confidential unless you give permission above. Your voice matters whether you choose to attach your name to it or not.</p>
@@ -139,11 +147,26 @@ function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(ra
 var cur=document.getElementById("cur"),curR=document.getElementById("cur-ring"),mx=-100,my=-100,rx=-100,ry=-100;
 document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});
 (function aC(){cur.style.left=mx+"px";cur.style.top=my+"px";rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+"px";curR.style.top=ry+"px";requestAnimationFrame(aC)})();
-document.querySelectorAll("a,button,.pc,.rb,.tm,.do-card,.serve-item,.vt-btn,.pt-item,.nom-reason").forEach(function(el){el.addEventListener("mouseenter",function(){document.body.classList.add("ch")});el.addEventListener("mouseleave",function(){document.body.classList.remove("ch")})});
+document.querySelectorAll("a,button,.pc,.rb,.tm,.do-card,.serve-item,.vt-btn,.pt-item,.nom-reason,.consent-opt,.story-submit").forEach(function(el){el.addEventListener("mouseenter",function(){document.body.classList.add("ch")});el.addEventListener("mouseleave",function(){document.body.classList.remove("ch")})});
 window.addEventListener("scroll",function(){var p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;document.getElementById("sp").style.width=p+"%"},{passive:true});
 document.querySelectorAll(".btn").forEach(function(b){b.addEventListener("mousemove",function(e){var r=b.getBoundingClientRect();var dx=e.clientX-r.left-r.width/2;var dy=e.clientY-r.top-r.height/2;b.style.transform="translate("+(dx*.3)+"px,"+(dy*.3)+"px)"});b.addEventListener("mouseleave",function(){b.style.transition="transform .65s cubic-bezier(.25,.46,.45,.94)";b.style.transform="translate(0,0)";setTimeout(function(){b.style.transition=""},650)})});
 var ro=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)e.target.classList.add("active")})},{threshold:.12});
 document.querySelectorAll(".reveal").forEach(function(el){ro.observe(el)});
+
+var consentRadios=document.querySelectorAll('input[name="ShareConsent"]');
+var nameField=document.getElementById("name-field");
+var nameInput=document.getElementById("storyName");
+consentRadios.forEach(function(r){
+  r.addEventListener("change",function(){
+    if(this.value==="Yes, with my first name"){
+      nameField.style.display="flex";
+      nameInput.focus();
+    } else {
+      nameField.style.display="none";
+      nameInput.value="";
+    }
+  });
+});
 </script>
 
 </body>
