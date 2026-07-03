@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work | Paalam</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--t:#C05746;--s:#899E8B;--c:#F5F2E9;--cd:#e8e4d8;--fh:"DM Serif Display",serif;--fb:"Inter",sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--c);color:var(--t);font-family:var(--fb);line-height:1.6;overflow-x:hidden;cursor:none}
+body::before{content:"";position:fixed;inset:0;z-index:9990;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");opacity:.35;mix-blend-mode:multiply}
+#cur{position:fixed;width:12px;height:12px;background:var(--t);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:multiply}
+#cur-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--t);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s;opacity:.42}
+body.ch #cur{width:28px;height:28px;background:var(--s)}
+body.ch #cur-ring{width:54px;height:54px;opacity:.16}
+#sp{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,var(--t),var(--s));z-index:9996;transition:width .08s linear}
+nav{position:fixed;top:3px;left:0;right:0;z-index:1000;background:rgba(245,242,233,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 24px rgba(192,87,70,.07)}
+.nav-logo{font-family:var(--fh);font-size:1.2rem;color:var(--t);text-decoration:none;letter-spacing:.02em}
+.nav-links{display:flex;gap:2.5rem}
+nav a{color:var(--t);text-decoration:none;font-family:var(--fb);font-size:.85rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;position:relative;transition:color .3s}
+nav a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--s);transition:width .35s ease}
+nav a:hover{color:var(--s)}
+nav a:hover::after{width:100%}
+nav a.active{color:var(--s)}
+nav a.active::after{width:100%}
+section{padding:7rem 2rem;text-align:center;scroll-margin-top:72px}
+.container{max-width:1100px;margin:0 auto}
+h2{font-family:var(--fh);font-size:clamp(2rem,4.5vw,3rem);font-weight:normal;margin-bottom:1.5rem;position:relative;display:inline-block;line-height:1.2}
+h2::after{content:"";position:absolute;bottom:-6px;left:25%;width:50%;height:2px;background:var(--s);transition:width .4s ease,left .4s ease}
+h2:hover::after{width:100%;left:0}
+h3{font-family:var(--fh);font-size:1.45rem;color:var(--s);margin-bottom:.8rem;line-height:1.3}
+p{font-size:1.05rem;max-width:740px;margin:0 auto 1.5rem;color:inherit;line-height:1.75}
+.hl{color:var(--t);font-style:italic;font-family:var(--fh)}
+.hl-s{color:var(--s);font-style:italic;font-family:var(--fh)}
+.btn{display:inline-block;margin-top:2rem;padding:.9rem 2.6rem;background:var(--t);color:var(--c);text-decoration:none;font-family:var(--fh);font-size:1.1rem;border-radius:50px;border:2px solid var(--t);transition:border-color .4s ease;cursor:none;position:relative;overflow:hidden;will-change:transform}
+.btn::before{content:"";position:absolute;inset:0;background:var(--s);transform:scaleX(0);transform-origin:right;transition:transform .4s ease;z-index:0}
+.btn sp{position:relative;z-index:1;display:block}
+.btn:hover::before{transform:scaleX(1);transform-origin:left}
+.btn:hover{border-color:var(--s)}
+.marquee-band{overflow:hidden;white-space:nowrap;background:var(--t);padding:1.3rem 0;position:relative}
+.marquee-track{display:inline-flex;animation:mscroll 26s linear infinite}
+.marquee-track span{font-family:var(--fh);font-size:clamp(1.25rem,2.8vw,2rem);color:var(--c);padding:0 2.2rem;white-space:nowrap;letter-spacing:.02em}
+.marquee-track span em{color:rgba(245,242,233,.45);font-style:normal;padding:0 0 0 2.2rem}
+@keyframes mscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-band.alt{background:var(--s)}
+.reveal{opacity:0;transform:translateY(48px);transition:opacity .85s ease,transform .85s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.15s}.rd2{transition-delay:.3s}.rd3{transition-delay:.45s}
+footer{background:var(--s);color:var(--c);padding:0 2rem 3.5rem;text-align:center;overflow:hidden}
+.ftag-wrap{padding:5.5rem 2rem 4rem}
+.ftag{font-family:var(--fh);font-size:clamp(2.6rem,9vw,6.5rem);color:var(--t);line-height:1.05;letter-spacing:.01em;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
+.ftag.active{opacity:1;transform:translateY(0)}
+footer h3{color:var(--c);font-family:var(--fh);font-size:2rem;margin-bottom:1rem;margin-top:2.5rem}
+footer p{color:rgba(245,242,233,.85);max-width:480px}
+footer a{color:var(--c);font-weight:600}
+.fbot{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(245,242,233,.18);font-size:.78rem;color:rgba(245,242,233,.5);letter-spacing:.07em;text-transform:uppercase}
+label{font-weight:600;margin-bottom:.4rem;font-size:.92rem}
+input[type=text],input[type=email],input[type=tel],select,textarea{padding:.9rem 1rem;border:1.5px solid #ddd;border-radius:10px;font-family:var(--fb);font-size:.98rem;outline:none;transition:border-color .3s,box-shadow .3s;width:100%;background:white}
+input:focus,textarea:focus,select:focus{border-color:var(--s);box-shadow:0 0 0 3px rgba(137,158,139,.14)}
+textarea{resize:vertical;min-height:140px}
+.fg{margin-bottom:1.4rem;display:flex;flex-direction:column}
+.rg{display:flex;flex-direction:row;gap:2rem;margin-top:.4rem}
+.rl{display:flex;align-items:center;font-weight:normal;cursor:none}
+.rl input{margin-right:10px;transform:scale(1.2);accent-color:var(--s)}
+.fw{background:white;padding:3rem;border-radius:18px;box-shadow:0 4px 40px rgba(0,0,0,.09);text-align:left;max-width:780px;margin:2rem auto 0}
+.bstep{padding:.75rem 1.8rem;border-radius:50px;font-family:var(--fh);font-size:1rem;cursor:none;transition:all .3s;border:2px solid var(--t)}
+.bsub{background:var(--t);color:var(--c)}.bsub:hover{background:var(--s);border-color:var(--s)}
+@media(max-width:900px){body{cursor:auto}#cur,#cur-ring{display:none}.rg{flex-direction:column;gap:.7rem}.nav-links{gap:1.2rem}nav{padding:1rem 1.5rem}}
+@media(max-width:600px){section{padding:5rem 1.5rem}.fw{padding:2rem 1.5rem}.nav-links{gap:.8rem}nav a{font-size:.76rem}}
+
+.page-hero{padding:9rem 2rem 5rem;text-align:center;background:var(--c)}
+.page-hero h1{font-family:var(--fh);font-size:clamp(2.5rem,6vw,4rem);color:var(--t);font-weight:normal;margin-bottom:1rem;opacity:0;animation:fu .9s ease forwards .2s}
+.page-hero p{opacity:0;animation:fu .9s ease forwards .5s}
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.do-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;margin-top:3rem}
+.do-card{background:white;border-radius:18px;padding:2.2rem;text-align:left;transition:transform .35s ease,box-shadow .35s ease;cursor:none;box-shadow:0 2px 14px rgba(0,0,0,.05)}
+.do-card:hover{transform:translateY(-8px);box-shadow:0 18px 44px rgba(137,158,139,.18)}
+.do-icon{font-size:2.2rem;margin-bottom:1rem;display:block}
+.do-card h3{font-size:1.25rem;margin-bottom:.5rem;color:var(--t)}
+.do-card p{font-size:.92rem;line-height:1.68;color:#555;margin:0;max-width:none}
+#manifesto{background:var(--cd);padding:7.5rem 2rem}
+.mlines{max-width:820px;margin:3.5rem auto 0;display:flex;flex-direction:column;gap:2.4rem}
+.mline{display:flex;align-items:flex-start;gap:1.6rem;opacity:0;transform:translateX(-28px);transition:opacity .8s ease,transform .8s ease}
+.mline.active{opacity:1;transform:translateX(0)}
+.mnum{font-family:var(--fh);font-size:2.4rem;color:rgba(192,87,70,.18);line-height:1;flex-shrink:0;width:2.5rem;text-align:right}
+.mtext{font-family:var(--fh);font-size:clamp(1.15rem,2.3vw,1.5rem);color:var(--t);line-height:1.38;text-align:left}
+.mtext em{color:var(--s);font-style:italic}
+#serve{background:var(--t);color:var(--c);padding:7rem 2rem}
+#serve h2{color:var(--c)}#serve h2::after{background:var(--c)}
+.serve-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:3.5rem}
+.serve-item{border:1.5px solid rgba(245,242,233,.2);border-radius:14px;padding:2rem 1.5rem;transition:background .3s,border-color .3s}
+.serve-item:hover{background:rgba(245,242,233,.09);border-color:rgba(245,242,233,.45)}
+.serve-item h3{color:var(--c);font-size:1.2rem;margin-bottom:.5rem}
+.serve-item p{color:rgba(245,242,233,.72);font-size:.88rem;margin:0;max-width:none}
+.sn{font-family:var(--fh);font-size:2.6rem;color:rgba(245,242,233,.18);line-height:1;margin-bottom:.4rem}
+.pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3.5rem}
+.pc{perspective:1000px;height:280px;cursor:none}
+.pi{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,0,.2,1)}
+.pc:hover .pi{transform:rotateY(180deg)}
+.pf,.pb{position:absolute;inset:0;border-radius:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;padding:2.2rem}
+.pf{background:white;border-bottom:4px solid var(--s);box-shadow:0 4px 24px rgba(0,0,0,.07)}
+.pb{background:var(--t);color:var(--c);transform:rotateY(180deg)}
+.pb p{color:rgba(245,242,233,.88);font-size:.95rem;margin:0;max-width:none}
+.pb h3{color:rgba(245,242,233,.68);margin-bottom:.7rem;font-size:1.15rem}
+.ptag{font-size:.78rem;font-style:italic;color:var(--t);margin-bottom:.6rem;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<div id="sp"></div>
+<nav>
+  <a href="index.html" class="nav-logo">Paalam</a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="work.html" class="active">Our Work</a><a href="join.html">Get Involved</a><a href="story.html">Your Story</a><a href="nominate.html">Nominate</a></div>
+</nav>
+
+<div class="page-hero">
+  <h1>What we build</h1>
+  <p>Three bridges, one mission. Paalam operates across education, access, and narrative, because <span class="hl">lasting change demands all three simultaneously</span>.</p>
+</div>
+
+<section id="whatwedo" style="background:var(--c);padding-top:2rem">
+  <div class="container">
+    <div class="do-grid">
+      <div class="do-card reveal"><span class="do-icon">&#127891;</span><h3>The Knowledge Bridge</h3><p>Immersive awareness sessions in schools, orphanages, and community centres, breaking taboo through structured conversation. Our curriculum makes silence <em>impossible</em>.</p></div>
+      <div class="do-card reveal rd1"><span class="do-icon">&#128230;</span><h3>The Access Bridge</h3><p>Strategic fundraising and distribution of sanitary products to communities where period poverty is systemic. No girl's education should be disrupted by want of a resource that costs less than a cup of chai.</p></div>
+      <div class="do-card reveal rd2"><span class="do-icon">&#128226;</span><h3>The Awareness Bridge</h3><p>High impact digital campaigns that shift cultural narrative at scale. We build content ecosystems that make menstrual health a normal, open, celebrated conversation, not a whispered secret.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="manifesto" style="background:var(--cd)">
+  <div class="container">
+    <h2 class="reveal">We believe</h2>
+    <p class="reveal rd1" style="font-style:italic">These are not aspirations. They are the convictions we operate from, every single day.</p>
+    <div class="mlines">
+      <div class="mline"><span class="mnum">I</span><p class="mtext">That menstruation is <em>biology, not shame</em>, and every girl deserves to know that before her first period.</p></div>
+      <div class="mline"><span class="mnum">II</span><p class="mtext">That <em>access to hygiene is a right</em>, not a privilege, and that right must be built into communities, not handed down as charity.</p></div>
+      <div class="mline"><span class="mnum">III</span><p class="mtext">That the <em>loudest voices</em> in this conversation should belong to the young, the most proximate to the problem and the most invested in the solution.</p></div>
+      <div class="mline"><span class="mnum">IV</span><p class="mtext">That <em>silence is a choice</em>, and we choose, every day, to speak.</p></div>
+      <div class="mline"><span class="mnum">V</span><p class="mtext">That one well placed bridge <em>changes everything</em> downstream, and building it is worth every conversation, every campaign, every session.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="serve"><div class="container"><h2 class="reveal">Who we reach</h2><p class="reveal rd1">Paalam does not operate from a distance. We go where the silence is loudest.</p><div class="serve-grid"><div class="serve-item reveal"><div class="sn">01</div><h3>Government schools</h3><p>Under resourced classrooms where menstrual education has never been formally taught.</p></div><div class="serve-item reveal rd1"><div class="sn">02</div><h3>Orphanages</h3><p>Children without family support systems, the most vulnerable and most overlooked.</p></div><div class="serve-item reveal rd2"><div class="sn">03</div><h3>Rural communities</h3><p>Villages and peri urban areas where period poverty is systemic and conversations are absent.</p></div><div class="serve-item reveal rd3"><div class="sn">04</div><h3>Digital audiences</h3><p>The next generation of advocates, donors, and champions, reached through content that refuses to stay quiet.</p></div></div></div></section>
+
+<section id="pillars" style="background:var(--c)"><div class="container"><h2 class="reveal">The three pillar framework</h2><p class="reveal rd1">Hover each pillar to look beneath the surface.</p><div class="pillars-grid"><div class="pc reveal"><div class="pi"><div class="pf"><h3>Community Education</h3><p class="ptag">The Knowledge Bridge</p><p>Immersive, in person sessions that challenge cultural narratives through conversation, not curriculum.</p></div><div class="pb"><h3>Why it matters</h3><p>23 million girls lose their education to menstrual silence annually. Knowledge is the first and most powerful bridge.</p></div></div></div><div class="pc reveal rd1"><div class="pi"><div class="pf"><h3>Resource Equity</h3><p class="ptag">The Access Bridge</p><p>Fundraising, procurement, and strategic distribution of menstrual products to communities where access is zero.</p></div><div class="pb"><h3>Why it matters</h3><p>Over 300 million women in India lack access to menstrual products. No girl should lose a school day to poverty.</p></div></div></div><div class="pc reveal rd2"><div class="pi"><div class="pf"><h3>Digital Advocacy</h3><p class="ptag">The Awareness Bridge</p><p>Content ecosystems that shift cultural narratives at scale, making menstrual health the standard, not the exception.</p></div><div class="pb"><h3>Why it matters</h3><p>Narrative change precedes systemic change. We use every channel available to make silence impossible.</p></div></div></div></div></div></section>
+
+<footer>
+  <div class="ftag-wrap">
+    <p class="ftag reveal" id="ftag-text">Build bridges.<br>Break silence.</p>
+  </div>
+  <div class="container">
+    <h3>Get in touch</h3>
+    <p>Ready to help us build bridges across India?<br><a href="mailto:paalam.initiative@gmail.com">paalam.initiative@gmail.com</a></p>
+    <p class="fbot">&#169; 2026 Paalam Initiative. All rights reserved. Built with purpose.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+var lenis=new Lenis({duration:1.3,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smooth:true});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+var cur=document.getElementById("cur"),curR=document.getElementById("cur-ring"),mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});
+(function aC(){cur.style.left=mx+"px";cur.style.top=my+"px";rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+"px";curR.style.top=ry+"px";requestAnimationFrame(aC)})();
+document.querySelectorAll("a,button,.pc,.rb,.tm,.do-card,.serve-item,.vt-btn,.pt-item,.nom-reason").forEach(function(el){el.addEventListener("mouseenter",function(){document.body.classList.add("ch")});el.addEventListener("mouseleave",function(){document.body.classList.remove("ch")})});
+window.addEventListener("scroll",function(){var p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;document.getElementById("sp").style.width=p+"%"},{passive:true});
+document.querySelectorAll(".btn").forEach(function(b){b.addEventListener("mousemove",function(e){var r=b.getBoundingClientRect();var dx=e.clientX-r.left-r.width/2;var dy=e.clientY-r.top-r.height/2;b.style.transform="translate("+(dx*.3)+"px,"+(dy*.3)+"px)"});b.addEventListener("mouseleave",function(){b.style.transition="transform .65s cubic-bezier(.25,.46,.45,.94)";b.style.transform="translate(0,0)";setTimeout(function(){b.style.transition=""},650)})});
+var ro=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)e.target.classList.add("active")})},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(function(el){ro.observe(el)});
+</script>
+<script>
+var mo=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)e.target.classList.add("active")})},{threshold:.3});
+document.querySelectorAll(".mline").forEach(function(el,i){el.style.transitionDelay=(i*.18)+"s";mo.observe(el)});
+</script>
+</body>
+</html>
