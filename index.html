@@ -72,6 +72,16 @@ footer a{color:var(--c);font-weight:600}
 .hero-ctas{opacity:0;animation:fu .9s ease forwards 1.6s;display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
 .btn-ghost{display:inline-block;padding:.9rem 2.6rem;background:transparent;color:var(--t);text-decoration:none;font-family:var(--fh);font-size:1.1rem;border-radius:50px;border:2px solid var(--s);transition:all .4s ease;cursor:none;position:relative;overflow:hidden;will-change:transform}
 .btn-ghost:hover{background:var(--s);color:var(--c);border-color:var(--s)}
+.hero-ctas{align-items:center}
+.hero-ctas .btn,.hero-ctas .btn-ghost{margin-top:0;line-height:1.6;vertical-align:middle}
+#field{background:var(--c)}
+.field-grid{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:1.2rem;margin-top:3rem;text-align:left}
+.field-grid figure{position:relative;margin:0;border-radius:16px;overflow:hidden;box-shadow:0 6px 28px rgba(192,87,70,.10)}
+.field-grid figure:first-child{grid-row:1 / span 2}
+.field-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+.field-grid figure:hover img{transform:scale(1.04)}
+.field-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.2rem 1.2rem .9rem;background:linear-gradient(transparent,rgba(40,25,20,.62));color:var(--c);font-family:var(--fh);font-style:italic;font-size:1.02rem}
+@media(max-width:700px){.field-grid{grid-template-columns:1fr;grid-template-rows:none}.field-grid figure:first-child{grid-row:auto}.field-grid figure{aspect-ratio:4/3}}
 @keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 .scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;opacity:0;animation:fu 1s ease forwards 2s;display:flex;flex-direction:column;align-items:center;gap:.5rem}
 .scroll-hint em{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--s);font-style:normal}
@@ -155,6 +165,19 @@ footer a{color:var(--c);font-weight:600}
   </div>
   <p class="sources">Sources: Dasra, <em>Spot On!</em> (2014) and <em>Dignity for Her</em> (2015); National Family Health Survey 5, Ministry of Health and Family Welfare (2019 to 2021); UNICEF India.</p>
 </div>
+
+<section id="field">
+  <div class="container">
+    <h2 class="reveal">Inside the classroom</h2>
+    <p class="reveal rd1">Our first session, 19 September 2026, at a government school. Taught in Marathi, one question at a time.</p>
+    <div class="field-grid reveal rd2">
+      <figure><img src="session-5.jpg" alt="Paalam volunteer teaching a menstrual health session to a class of schoolgirls" loading="lazy"><figcaption>Where the silence starts to break</figcaption></figure>
+      <figure><img src="session-1.jpg" alt="Volunteer speaking to students in a classroom" loading="lazy"><figcaption>Conversation, not curriculum</figcaption></figure>
+      <figure><img src="session-6.jpg" alt="A full classroom of students listening during a Paalam session" loading="lazy"><figcaption>A full room, listening</figcaption></figure>
+    </div>
+    <a href="work.html" class="btn"><span>See our work</span></a>
+  </div>
+</section>
 
 <div id="quote-section">
   <div class="q-inner reveal">
